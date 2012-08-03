@@ -47,7 +47,6 @@
         <option name="myName" value="Project Default" />
         <option name="myLocal" value="false" />
         <inspection_tool class="Fix shebang" enabled="true" level="WARNING" enabled_by_default="true">/bin/sh#/bin/bash</inspection_tool>
-        <inspection_tool class="JSHint" enabled="true" level="ERROR" enabled_by_default="true" />
       </profile>
     </profiles>
     <option name="PROJECT_PROFILE" value="Project Default" />
@@ -58,6 +57,7 @@
     <option bitwise="true" />
     <option curly="true" />
     <option noarg="true" />
+    <option evil="true" />
     <option forin="true" />
     <option strict="true" />
     <option noempty="true" />

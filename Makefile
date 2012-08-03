@@ -16,7 +16,6 @@ clean:
 	@echo "We clean a little ..."
 	@rm -f ${output_jar};
 	@rm -rf $(BIN_DIR);
-	@rm -rf .tmp
 
 $(BIN_DIR): clean $(java_src) $(jar_libs)
 	@rm -rf $(BIN_DIR);
@@ -43,8 +42,7 @@ endif
 ifeq ($(web_app),1)
 web: clean $(output_jar)
 	@echo "Start the test"
-	@chromium-browser --user-data-dir=${user_tmp_nav} "file://${project_home}/index.html" > /dev/null
-	@rm -rf .tmp
+	@google-chrome --user-data-dir=${user_tmp_nav} "file://${project_home}/index.html" > /dev/null
 endif
 
 is_git_repo=$(shell [ -d .git ] && echo 1 || echo 0)

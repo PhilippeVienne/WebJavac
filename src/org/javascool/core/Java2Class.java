@@ -3,22 +3,14 @@
  **************************************************************/
 package org.javascool.core;
 
-import javax.tools.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.io.*;
 import java.lang.reflect.Method;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.Hashtable;
 import java.util.regex.Pattern;
 
 /**
  * Définit le mécanisme de compilation en ligne d'un code Java et du chargement de la classe obtenue.
- * <p>Note: utilise un sous ensemble du <tt>tools.jar</tt> de la JDK appelé ici <tt>javac.jar</tt> qui doit être dans le CLASSPATH.</p>
+ * <p>Note: utilise un sous ensemble du <tt>tools.jar</tt> de la JDK1.6 de SUN de la JDK appelé ici <tt>javac.jar</tt> qui doit être dans le CLASSPATH.</p>
  *
  * @serial exclude
  * @see <a href="Java2Class.java.html">code source</a>
@@ -66,68 +58,8 @@ public class Java2Class {
         if (javaFiles.length == 0) {
             return false;
         }
-        return compile2(javaFiles, allErrors);
-    }
 
-    // Implementation using the javac compiler api : il n'est plus utilisé (donc plus maintenu !) avec l'arrivée dela jre 76
-    // Attention ce code n'est plus à jour il est gardé ici uniquement en arcive !!!!!
-    private static boolean compile1(String javaFiles[], boolean allErrors) {
-        // Initialisation des objets dy compilateur// The compiler tool
-        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler(); // The compiler tool
-        if (compiler == null) {
-            System.err.println("Attention !!: le compilateur ne peut être chargé (il est absent du path ou sa version est incorrecte)");
-            throw new IllegalStateException("Attention !!: le compilateur ne peut être chargé (il est absent du path ou sa version est incorrecte)");
-        }
-        DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>(); // The diagnostic colector
-        StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, Locale.FRENCH, null); // The file manager
-        // Mise en place des fichiers
-        List<File> sourceFileList = new ArrayList<File>();
-        for (String javaFile : javaFiles)
-            sourceFileList.add(new File(javaFile));
-        Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(sourceFileList);
-        // Lancement de la compilation
-        JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager, diagnostics, null, null, compilationUnits);
-        task.call();
-        try {
-            fileManager.close();
-        } catch (IOException e) {
-            System.err.println("Erreur à la fermeture du file-manager du compilateur : " + e);
-        }
-        // Gestion des erreurs
-        for (Diagnostic diagnostic : diagnostics.getDiagnostics()) {
-            String javaDiagnostic = diagnostic.getMessage(Locale.FRENCH);
-            String jvsDiagnostic = javaFiles.length > 1 ? javaDiagnostic : javaDiagnostic.split(" ", 2)[1];
-            if (jvsDiagnostic.equals("not a statement")) {
-                jvsDiagnostic = "L'instruction n'est pas valide.\n (Il se peut qu'une variable indiquée n'existe pas)";
-            } else if (jvsDiagnostic.equals("';' expected")) {
-                jvsDiagnostic = "Un ';' est attendu (il peut manquer, ou une parenthèse être incorrecte, ..)";
-            } else if (jvsDiagnostic.startsWith("cannot find symbol")) {
-                jvsDiagnostic = "Il y a un symbole non-défini à cette ligne: " +
-                        jvsDiagnostic.replaceFirst("cannot[^:]*:\\s*([^\\n]*)[^:]*:\\s*(.*)", "«$1»");
-            } else if (jvsDiagnostic.matches(".*\\W*found\\W*:\\W([A-Za-z\\.]*)\\Wrequired:\\W([A-Za-z\\.]*)")) {
-                jvsDiagnostic = jvsDiagnostic.replaceAll("incompatible\\Wtypes\\W*found\\W*:\\W([A-Za-z\\.]*)\\Wrequired:\\W([A-Za-z\\.]*)",
-                        "Vous avez mis une valeur de type $1 alors qu'il faut une valeur de type $2");
-            } else if (jvsDiagnostic.matches("package org\\.javascool\\.proglets\\.[A-Za-z0-9_]+ does not exist")) {
-                jvsDiagnostic = jvsDiagnostic.replaceAll("package org\\.javascool\\.proglets\\.([A-Za-z0-9_]+) does not exist",
-                        "La proglet $1 n'existe pas");
-            } else {
-                jvsDiagnostic = "Erreur Java : «" + jvsDiagnostic + "»";
-            }
-            int line = (int) diagnostic.getLineNumber();
-            String source = new File(diagnostic.getSource().toString()).getParentFile().getName() + "/" + new File(diagnostic.getSource().toString()).getName();
-            String where = javaFiles.length == 1 ? "" : " de " + source + "";
-            System.out.println("-------------------\nErreur lors de la compilation à la ligne " + line + where + ".\n" + jvsDiagnostic + "\n-------------------");
-            System.err.println("Erreur à la compilation: fichier=" + source + " ligne =" + line + " erreur=" + javaDiagnostic);
-            // En fait ici on choisit d'arrêter à la 1ère erreur pour pas embrouiller l'apprennant
-            if (diagnostic.getKind().equals(Diagnostic.Kind.ERROR) && !allErrors) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private static boolean compile2(String javaFiles[], boolean allErrors) {
-        // Appel du compilateur par sa méthode main
+        // Appel du compilateur SUN par sa méthode main
         int options = 2;
         String args[] = new String[options + javaFiles.length];
         args[0] = "-g";
@@ -204,15 +136,61 @@ public class Java2Class {
     public static Runnable load(String path) {
         try {
             File javaClass = new File(path).getAbsoluteFile();
-            URL[] urls = new URL[]{new URL("file:" + javaClass.getParent() + File.separator)};
-            Class<?> j_class = new URLClassLoader(urls).loadClass(javaClass.getName().replaceAll("\\.java", ""));
+            Class<?> j_class = new JVSClassLoader(javaClass.getParent()).loadClass(javaClass.getName().replaceAll("\\.class", ""));
             Object o = j_class.newInstance();
             if (!(o instanceof Runnable)) {
                 throw new IllegalArgumentException("Erreur: la classe de " + javaClass + " n'est pas un Runnable");
             }
             return (Runnable) o;
         } catch (Throwable e) {
-            throw new RuntimeException("Erreur: impossible de charger la classe de : " + path);
+            throw new RuntimeException("Erreur: impossible de charger la classe de : " + path + e);
+        }
+    }
+
+    static class JVSClassLoader extends ClassLoader {
+        private String location = null;
+        private Hashtable classes = new Hashtable();
+
+        public JVSClassLoader(String location) {
+            super(ClassLoader.getSystemClassLoader()); //calls the parent class loader's constructor
+            this.location = location;
+        }
+
+        public Class loadClass(String className) throws ClassNotFoundException {
+            return findClass(className);
+        }
+
+        public Class findClass(String className) throws ClassNotFoundException {
+            byte classByte[];
+            Class result = null;
+
+            result = (Class) classes.get(className); //checks in cached classes
+            if (result != null) {
+                return result;
+            }
+
+            try {
+                return findSystemClass(className);
+            } catch (Exception e) {
+            }
+
+            try {
+                FileInputStream in = new FileInputStream(location + File.separator + className + ".class");
+                ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+                int nextValue = in.read();
+                while (-1 != nextValue) {
+                    byteStream.write(nextValue);
+                    nextValue = in.read();
+                }
+
+                classByte = byteStream.toByteArray();
+                result = defineClass(className, classByte, 0, classByte.length, null);
+                classes.put(className, result);
+                return result;
+            } catch (Exception e) {
+                throw new ClassNotFoundException(e.toString());
+            }
+            //
         }
     }
 }

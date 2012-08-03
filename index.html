@@ -21,21 +21,93 @@
     <title>PolyFileWriter</title>
     <script src="js/jquery.js"></script>
     <script src="js/jquery.webjavac.js"></script>
+    <!-- ####################################################
+                Libs for the example page
+    ##################################################### -->
+
+    <!-- Bootstrap -->
+    <link href="demoLibs/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+        @media (min-width: 979px) {
+        body{padding-top: 60px}
+        }
+        #console{
+            overflow: auto;
+            height: 300px;
+            background: #000000;
+            color: #adff2f;
+
+        }
+    </style>
+
+    <!-- CodeMirror -->
+    <link href="demoLibs/codemirror/lib/codemirror.css" rel="stylesheet"/>
+
 </head>
 <body>
-<button>Demo</button>
-<div>
 
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#">WebJavac</a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="active"><a href="#">Demo</a></li>
+                    <li><a href="#about">GitHub Repo</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
 </div>
+
+<div class="container">
+
+    <h1>Demo for the WebJavac Library</h1>
+    <p>Enter you code in the editor below and click on Compile button</p>
+    <div class="btn-toolbar">
+        <div class="btn-group">
+            <button class="btn" id="compileButton">Compile</button>
+            <button class="btn disabled" id="runButton">Run</button>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6" id="editor"></div>
+        <pre class="span6" id="console">I'm your console for the demo.
+  All output (compilation and java) happens here. </pre>
+    </div>
+
+</div> <!-- /container -->
+<script src="demoLibs/bootstrap/js/bootstrap.js"></script>
+<script src="demoLibs/codemirror/lib/codemirror.js"></script>
+<script src="demoLibs/codemirror/mode/clike/clike.js"></script>
 <script>
     $(document).ready(function(){
+        var myCodeMirror = CodeMirror(document.getElementById("editor"), {
+            value: "void main() {\n  System.out.println(\"bravo\");\n  }",
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-csrc"
+        });
         $.webjavac({
-            jar:"webjavac.jar", // Location of the JAR (If you don't write it the default location will be polyfilewriter.jar)
-            id:"PolyFileWriter" // The applet id (If you don't write it the default location will be a random UUID)
+            jar:"webjavac.jar", // Location of the JAR (If you don't write it the default location will be the jar)
+            id:null // The applet id (If you don't write (null value or not wrote) it the default location will be a random UUID)
         });
-        $("button").click(function(){
-            $("div").html($.webjavac('askFile',true));
+        var compileResult=null;
+        $("#compileButton").click(function(){
+            compileResult=$.webjavac('compile',myCodeMirror.getValue());
+            $("#console").html(compileResult.console);
+            $("#runButton").removeClass("disabled");
         });
+        $("#runButton").click(function(){
+            if(compileResult!=null&&compileResult.success){
+                $("#console").html($.webjavac('exec',compileResult.compiledClass));
+            }
+        })
     })
 </script>
 </body>

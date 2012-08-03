@@ -97,16 +97,17 @@ public class Jvs2Java extends Translator {
                 i++;
             }
             // Imports proglet's static methods
+            // TODO: Restore JVS Packages
             head.append("import static java.lang.Math.*;");
             head.append("import static org.javascool.macros.Macros.*;");
             head.append("import static org.javascool.macros.Stdin.*;");
             head.append("import static org.javascool.macros.Stdout.*;");
-            if (progletPackageName != null) {
-                head.append("import static ").append(progletPackageName).append(".Functions.*;");
-            }
-            if (progletTranslator != null) {
-                head.append(progletTranslator.getImports());
-            }
+//            if (progletPackageName != null) {
+//                head.append("import static ").append(progletPackageName).append(".Functions.*;");
+//            }
+//            if (progletTranslator != null) {
+//                head.append(progletTranslator.getImports());
+//            }
             // Declares the proglet's core as a Runnable in the Applet
             uid++;
             head.append("public class JvsToJavaTranslated").append(uid).append(" implements Runnable{");
@@ -114,7 +115,7 @@ public class Jvs2Java extends Translator {
             head.append("  public void run() {");
             head.append("   try{ main(); } catch(Throwable e) { ");
             head.append("    if (e.toString().matches(\".*Interrupted.*\"))System.out.println(\"\\n-------------------\\nProggramme arrêté !\\n-------------------\\n\");");
-            head.append("    else System.out.println(\"\\n-------------------\\nErreur lors de l'exécution de la proglet\\n\"+org.javascool.core.Jvs2Java.report(e)+\"\\n-------------------\\n\");}");
+            head.append("    else System.out.println(\"\\n-------------------\\nErreur lors de l'exécution de la proglet\\n" +/*\"+org.javascool.core.Jvs2Java.report(e)+\"*/"\\n-------------------\\n\");}");
             head.append("}");
         }
         String finalBody = body.toString().
