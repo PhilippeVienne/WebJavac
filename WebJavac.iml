@@ -17,6 +17,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="javac" level="project" />
+    <orderEntry type="library" name="JVSLib" level="project" />
   </component>
 </module>
 

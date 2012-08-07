@@ -2,14 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ae0403d-e959-43d8-ac3d-1f6c0e3ef90b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/javascool/tools/SystemOutputController.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/json_simple-1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/macros/Macros.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/macros/Stdin.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/macros/Stdout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/macros/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/tools/FileManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/tools/Invoke.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/tools/SystemOutputController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/Console.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/CurveOutput.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/Dialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/IconOutput.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/MainFrame.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/NumberInput.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/PanelApplet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/StartStopButton.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/TabbedPane.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/ToolBar.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/close.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/compile.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/copyAll.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/copySelection.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/erase.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/error.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/ledblue.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/ledgreen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/ledred.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/logo-builder.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/logo16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/logo32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/new.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/next.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/open.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/play.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/prev.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/refresh.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/remove.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/save.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/saveas.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/scripts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/icons/stop.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/javascool/widgets/package.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webjavac.jar" afterPath="$PROJECT_DIR$/webjavac.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebJavac.iml" afterPath="$PROJECT_DIR$/WebJavac.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebJavac.ipr" afterPath="$PROJECT_DIR$/WebJavac.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebJavac.iws" afterPath="$PROJECT_DIR$/WebJavac.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/bin/META-INF/MANIFEST.MF" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/javascool/core/Java2Class.java" afterPath="$PROJECT_DIR$/src/org/javascool/core/Java2Class.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/javascool/core/Jvs2Java.java" afterPath="$PROJECT_DIR$/src/org/javascool/core/Jvs2Java.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/javascool/macros/Stdin.java" afterPath="$PROJECT_DIR$/src/org/javascool/macros/Stdin.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/javascool/webjavac/Gateway.java" afterPath="$PROJECT_DIR$/src/org/javascool/webjavac/Gateway.java" />
     </list>
     <ignored path="WebJavac.iws" />
@@ -81,26 +122,6 @@
         <entry file="file://$PROJECT_DIR$/src/org/javascool/core/Java2Class.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="190" column="13" selection-start="8973" selection-end="8973" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dialog.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/javascool/widgets/Dialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="13" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Stdin.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/javascool/macros/Stdin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="309" column="43" selection-start="9909" selection-end="9909" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -109,40 +130,28 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="38" selection-start="3155" selection-end="3155" vertical-scroll-proportion="-6.8783784">
+            <state line="98" column="48" selection-start="3397" selection-end="3397" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gateway.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Gateway.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/javascool/webjavac/Gateway.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="120" column="75" selection-start="4701" selection-end="4701" vertical-scroll-proportion="0.0">
+            <state line="38" column="39" selection-start="1287" selection-end="1287" vertical-scroll-proportion="0.015120967">
               <folding>
-                <element signature="e#4449#4891#0" expanded="true" />
-                <element signature="e#4880#4881#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JSONValue.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/json_simple-1.1.jar!/org/json/simple/JSONValue.class">
+      <file leaf-file-name="JavaGate.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/jvslib.jar!/org/javascool/tools/JavaGate.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="-2.4">
+            <state line="5" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery.webjavac.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/jquery.webjavac.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="29" selection-start="889" selection-end="889" vertical-scroll-proportion="0.015625">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -152,19 +161,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="31" column="6" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SystemOutputController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/javascool/tools/SystemOutputController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="26" selection-start="3526" selection-end="3526" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#3548#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="e#1128#1150#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -182,7 +178,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/javascool/widgets/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/org/javascool/widgets/NumberInput.java" />
         <option value="$PROJECT_DIR$/src/org/javascool/widgets/PanelApplet.java" />
         <option value="$PROJECT_DIR$/src/org/javascool/tools/Invoke.java" />
@@ -194,19 +189,20 @@
         <option value="$PROJECT_DIR$/src/org/javascool/core/Java2Class.java" />
         <option value="$PROJECT_DIR$/src/org/javascool/macros/Stdin.java" />
         <option value="$PROJECT_DIR$/src/org/javascool/tools/SystemInputOutputController.java" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/src/org/javascool/webjavac/Gateway.java" />
         <option value="$PROJECT_DIR$/Makefile" />
         <option value="$PROJECT_DIR$/js/jquery.webjavac.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/lib/jvslib.jar!/org/javascool/tools/JavaGate.class" />
+        <option value="$PROJECT_DIR$/src/org/javascool/webjavac/Gateway.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1919" />
+    <option name="x" value="1920" />
     <option name="y" value="26" />
-    <option name="width" value="1922" />
-    <option name="height" value="1176" />
+    <option name="width" value="1602" />
+    <option name="height" value="1174" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -236,30 +232,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -291,161 +263,29 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="widgets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webjavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="macros" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demoLibs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebJavac" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demoLibs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -630,8 +470,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1919" y="26" width="1922" height="1176" extended-state="6" />
-    <editor active="true" />
+    <frame x="1920" y="26" width="1602" height="1174" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -644,10 +484,10 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28335112" sideWeight="0.35392156" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2818533" sideWeight="0.36345777" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JSON Formatter" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28335112" sideWeight="0.6392157" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2818533" sideWeight="0.62966603" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -749,34 +589,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/javascool/widgets/MainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="13" selection-start="1226" selection-end="1226" vertical-scroll-proportion="-0.004750594" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javascool/widgets/IconOutput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="34" selection-start="1860" selection-end="1860" vertical-scroll-proportion="-1.3570567" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javascool/widgets/CurveOutput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="13" selection-start="1252" selection-end="1252" vertical-scroll-proportion="-1.2484921" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javascool/core/Exec.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="13" selection-start="498" selection-end="498" vertical-scroll-proportion="0.21377672" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javascool/macros/Stdout.java">
+    <entry file="file://$PROJECT_DIR$/js/jquery.webjavac.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="784" selection-end="784" vertical-scroll-proportion="-1.3159145" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javascool/widgets/Console.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="30" selection-start="5842" selection-end="5842" vertical-scroll-proportion="3.1021378" />
+        <state line="20" column="29" selection-start="889" selection-end="889" vertical-scroll-proportion="0.01529052" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javascool/core/Jvs2Java.java">
@@ -786,74 +606,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/javascool/core/Java2Class.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="190" column="13" selection-start="8973" selection-end="8973" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javascool/widgets/Dialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="13" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/json_simple-1.1.jar!/org/json/simple/JSONValue.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="153" selection-end="153" vertical-scroll-proportion="-2.4">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javascool/tools/SystemOutputController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="26" selection-start="3526" selection-end="3526" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#3548#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#1128#1150#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="190" column="13" selection-start="8973" selection-end="8973" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="38" selection-start="3155" selection-end="3155" vertical-scroll-proportion="-6.8783784">
+        <state line="98" column="48" selection-start="3397" selection-end="3397" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javascool/macros/Stdin.java">
+    <entry file="jar://$PROJECT_DIR$/lib/jvslib.jar!/org/javascool/tools/JavaGate.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="309" column="43" selection-start="9909" selection-end="9909" vertical-scroll-proportion="0.0">
+        <state line="5" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/javascool/webjavac/Gateway.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="75" selection-start="4701" selection-end="4701" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#4449#4891#0" expanded="true" />
-            <element signature="e#4880#4881#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Makefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="6" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="31" column="6" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/jquery.webjavac.js">
+    <entry file="file://$PROJECT_DIR$/src/org/javascool/webjavac/Gateway.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="29" selection-start="889" selection-end="889" vertical-scroll-proportion="0.015625">
+        <state line="38" column="39" selection-start="1287" selection-end="1287" vertical-scroll-proportion="0.015120967">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

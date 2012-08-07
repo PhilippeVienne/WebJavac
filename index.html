@@ -93,6 +93,14 @@
             $("#console").append(data.print);
         }
     }
+    $(document).bind("javascool.compiled",function(event,data){
+        console.log(data);
+        compileResult=data;
+        $("#runButton").removeClass("disabled");
+    });
+    $(document).bind("java.System.out",function(event,data){
+        console.log(data);
+    });
     $(document).ready(function(){
         var myCodeMirror = CodeMirror(document.getElementById("editor"), {
             value: "void main() {\n  for(int n = 0; n < 10; n = n + 1) {\n    println(\"Hello World !\");\n  };\n}",
@@ -105,9 +113,8 @@
             id:null // The applet id (If you don't write (null value or not wrote) it the default location will be a random UUID)
         });
         $("#compileButton").click(function(){
-            compileResult=$.webjavac('compile',myCodeMirror.getValue());
-            $("#console").html(compileResult.console);
-            $("#runButton").removeClass("disabled");
+            $.webjavac('compile',myCodeMirror.getValue());
+
         });
         $("#runButton").click(function(){
             if(compileResult!=null&&compileResult.success){
