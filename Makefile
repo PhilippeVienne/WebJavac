@@ -1,8 +1,5 @@
-sign_key=mykey
+sign_key=inria_dev
 tmp=.tmp
-#ifeq ($(shell whoami)@$(shell uname -n),pviene@tin)
-#	sign_key=mykey
-#endif
 project_home=${PWD}
 java_src=$(shell find src -name '*.java')
 BIN_DIR=bin
@@ -15,6 +12,7 @@ web_app=1
 clean:
 	@echo "We clean a little ..."
 	@rm -f ${output_jar};
+	@rm -f dist.zip
 	@rm -rf $(BIN_DIR);
 
 $(BIN_DIR): clean $(java_src) $(jar_libs)
@@ -24,17 +22,20 @@ $(BIN_DIR): clean $(java_src) $(jar_libs)
 	@$(foreach var,$(jar_libs),unzip -qo $(var) -d $(BIN_DIR);)
 	@rm -rf $(BIN_DIR)/META_INF
 	@echo "Compile the code ..."
-	@${JDK_BIN}javac -d $(BIN_DIR) -classpath $(BIN_DIR) $(java_src)
+	@${JDK_BIN}javac -d $(BIN_DIR) -classpath $(BIN_DIR):$(shell find ${JDK_BIN}/../ -name 'plugin.jar') $(java_src)
 
 $(output_jar): $(BIN_DIR)
 	@echo "Create the JAR Archive ..."
 	@${JDK_BIN}jar cf ${output_jar} -C $(BIN_DIR) .
-ifdef sign_key
-	@echo "Signing the JAR with key $(sign_key)"
-ifdef KEYTOOL_PASSWORD
-	@${JDK_BIN}jarsigner ${output_jar} ${sign_key} -storepass ${KEYTOOL_PASSWORD} > /dev/null
+ifdef P12_KEY
+	@echo "Signing the JAR with INRIA key"
+	@@${JDK_BIN}jarsigner ${output_jar} -storetype pkcs12 -keystore ${P12_KEY} "inria's comodo ca limited id"
 else
-	@${JDK_BIN}jarsigner ${output_jar} ${sign_key}
+ifdef sign_key
+	@echo "Signing the JAR with $(sign_key) key"
+	@@${JDK_BIN}jarsigner ${output_jar} ${sign_key}
+else
+	@echo "No key to sign jar"
 endif
 endif
 	@echo "Jar build"
@@ -53,3 +54,5 @@ commit:
 	@echo "Pushing ..."
 endif
 
+dist:$(output_jar)
+	@zip -r dist.zip index.html js demoLibs webjavac.jar

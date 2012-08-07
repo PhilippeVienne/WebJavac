@@ -86,9 +86,16 @@
 <script src="demoLibs/codemirror/lib/codemirror.js"></script>
 <script src="demoLibs/codemirror/mode/clike/clike.js"></script>
 <script>
+    var compileResult=null;
+    var webconsole={
+        print:function(data){
+            console.log("Java out : "+data.print);
+            $("#console").append(data.print);
+        }
+    }
     $(document).ready(function(){
         var myCodeMirror = CodeMirror(document.getElementById("editor"), {
-            value: "void main() {\n  System.out.println(\"bravo\");\n  }",
+            value: "void main() {\n  for(int n = 0; n < 10; n = n + 1) {\n    println(\"Hello World !\");\n  };\n}",
             lineNumbers: true,
             matchBrackets: true,
             mode: "text/x-csrc"
@@ -97,7 +104,6 @@
             jar:"webjavac.jar", // Location of the JAR (If you don't write it the default location will be the jar)
             id:null // The applet id (If you don't write (null value or not wrote) it the default location will be a random UUID)
         });
-        var compileResult=null;
         $("#compileButton").click(function(){
             compileResult=$.webjavac('compile',myCodeMirror.getValue());
             $("#console").html(compileResult.console);
@@ -105,7 +111,7 @@
         });
         $("#runButton").click(function(){
             if(compileResult!=null&&compileResult.success){
-                $("#console").html($.webjavac('exec',compileResult.compiledClass));
+                $.webjavac('execInPrivateThread',compileResult.compiledClass);
             }
         })
     })

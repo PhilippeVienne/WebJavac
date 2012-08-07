@@ -18,14 +18,18 @@
 
 package org.javascool.webjavac;
 
+import netscape.javascript.JSObject;
 import org.javascool.core.Java2Class;
 import org.javascool.core.Jvs2Java;
 import org.javascool.tools.FileManager;
+import org.javascool.tools.SystemOutputController;
 import org.json.simple.JSONObject;
 
 import javax.swing.*;
 import java.applet.Applet;
 import java.io.*;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
@@ -34,7 +38,27 @@ import java.security.PrivilegedAction;
  *
  * @author Philippe VIENNE
  */
-public class Gateway extends Applet {
+public class Gateway extends Applet implements SystemOutputController.SystemOutputListener {
+
+    SystemOutputController systemOutputController = new SystemOutputController();
+
+    /** Send a print out to browser.
+     * @param out The data to print into console
+     */
+    @Override
+    public void print(String out) {
+        JSONObject r = new JSONObject();
+        r.put("print", out);
+        JSObject window=JSObject.getWindow(this);
+        /*try{
+            window.eval("webconsole.print("+r.toJSONString()+");");
+        }catch (Throwable e){ */
+            try{
+
+                window.eval("webconsole.print("+r.toJSONString()+");");
+            }catch(Throwable e2){}
+        //}
+    }
 
     /* ================================================================================================================
     *  ================================================================================================================
@@ -61,18 +85,21 @@ public class Gateway extends Applet {
                     new PrivilegedAction<String>() {
                         public String run() {
                             //String javaFile=getTmpFile(code,"JvsCode",".jvs")
-                            SystemInputOutputController sioc = new SystemInputOutputController();
-                            sioc.startListening();
+
+
                             String javaCode = getJVSTranslator().translate(code), javaClass = getJVSTranslator().getClassName();
                             File tmpDir = FileManager.createTempDir("jvs-compile-" + javaClass);
                             String javaFile = tmpDir.getAbsolutePath() + File.separatorChar + javaClass + ".java";
                             FileManager.save(javaFile, javaCode);
-                            boolean success = Java2Class.compile(javaFile);
-                            sioc.stopListening();
+                            String[] java=new String[1], path=new String[1];
+                            java[0]=javaFile;
+                            path[0]=jar();
+                            boolean success = Java2Class.compile(java,false,path);
+
                             JSONObject r = new JSONObject();
                             r.put("success", success);
                             r.put("compiledClass", javaFile.replace(".java", ".class"));
-                            r.put("console", sioc.getResult());
+                            r.put("console", systemOutputController.getResult());
                             return r.toString();
                         }
                     }
@@ -81,6 +108,25 @@ public class Gateway extends Applet {
             popException(e);
             throw e;
         }
+    }
+
+    public void execInPrivateThread(final String location){
+        assertSafeUsage();
+        Thread t=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String r=exec(location);
+                    if(!r.equals("")){
+                        RuntimeException exception=new RuntimeException(r);
+                        popException(exception);
+                    }
+                } catch (Exception e) {
+                    popException(e);
+                }
+            }
+        },"JVSExecThread");
+        t.start();
     }
 
     /**
@@ -98,12 +144,13 @@ public class Gateway extends Applet {
                         private String result = "";
 
                         public String run() {
-                            SystemInputOutputController sioc = new SystemInputOutputController();
-                            sioc.startListening();
                             Runnable clazz = Java2Class.load(location);
-                            clazz.run();
-                            sioc.stopListening();
-                            return sioc.getResult();
+                            try {
+                                clazz.run();
+                            } catch (Throwable e) {
+                                return e.toString();
+                            }
+                            return "";
                         }
 
                     }
@@ -111,80 +158,6 @@ public class Gateway extends Applet {
         } catch (Exception e) {
             popException(e);
             throw e;
-        }
-    }
-
-    class SystemInputOutputController {
-        private String result = "";
-        private PrintStream oldOut = null, oldErr = null;
-        private boolean listening = false;
-
-        public void startListening() {
-            //this.oldErr=System.err;
-            this.oldOut = System.out;
-            result = "";
-            this.redirectSystemStreams();
-            listening = true;
-        }
-
-        public void stopListening() {
-            System.setOut(this.oldOut);
-            //System.setErr(this.oldErr);
-            this.oldOut = this.oldErr = null;
-            listening = false;
-        }
-
-        public String getResult() {
-            return result;
-        }
-
-        private void updateTextPane(final String text) {
-            result += text;
-        }
-
-        private void redirectSystemStreams() {
-            System.setOut(new PrintStream(new SystemOutputStream(SystemOutputStream.OUT), true));
-            //System.setErr(new PrintStream(new SystemOutputStream(SystemOutputStream.ERR), true));
-        }
-
-        private class SystemOutputStream extends OutputStream {
-
-            final static int OUT = 0;
-            final static int ERR = 1;
-
-            private int type = 0;
-
-            public SystemOutputStream(int outType) {
-                super();
-                type = outType;
-            }
-
-            @Override
-            public void write(final int b) throws IOException {
-                updateTextPane(String.valueOf((char) b));
-                switch (type) {
-                    case OUT:
-                        if (oldOut != null) oldOut.write(b);
-                    case ERR:
-                        if (oldErr != null) oldErr.write(b);
-                }
-            }
-
-            @Override
-            public void write(byte[] b, int off, int len) throws IOException {
-                updateTextPane(new String(b, off, len));
-                switch (type) {
-                    case OUT:
-                        if (oldOut != null) oldOut.write(b, off, len);
-                    case ERR:
-                        if (oldErr != null) oldErr.write(b, off, len);
-                }
-            }
-
-            @Override
-            public void write(byte[] b) throws IOException {
-                write(b, 0, b.length);
-            }
         }
     }
 
@@ -200,6 +173,48 @@ public class Gateway extends Applet {
     }
 
     private Jvs2Java translator;
+
+    /** Retrouve le chemin du jar courant.
+     * @return Le chemin du jar
+     * @throws RuntimeException lorsque l'application n'a pas été démarré depuis un jar
+     */
+    public static String jar() {
+        if(javascoolJar != null) {
+            return javascoolJar;
+        }
+        String url = Gateway.class.getResource("").toString().replaceFirst("jar:file:([^!]*)!.*", "$1");
+        System.err.println("Notice: javascool url is " + url);
+        if(url.endsWith(".jar")) {
+            try {
+                String jar = URLDecoder.decode(url, "UTF-8");
+                if(new File(jar).exists()) {
+                    return javascoolJar = jar;
+                }
+                // Ici on essaye tous les encodages possibles pour essayer de détecter javascool
+                {
+                    jar = URLDecoder.decode(url, Charset.defaultCharset().name());
+                    if(new File(jar).exists()) {
+                        javascoolJarEnc = Charset.defaultCharset().name();
+                        return jar;
+                    }
+                    for(String enc : Charset.availableCharsets().keySet()) {
+                        jar = URLDecoder.decode(url, enc);
+                        if(new File(jar).exists()) {
+                            javascoolJarEnc = enc;
+                            System.err.println("Notice: javascool file " + jar + " correct decoding as " + enc);
+                            return javascoolJar = jar;
+                        } else {
+                            System.err.println("Notice: javascool file " + jar + " wrong decoding as " + enc);
+                        }
+                    } throw new RuntimeException("Il y a un bug d'encoding sur cette plate forme");
+                }
+            } catch(UnsupportedEncodingException ex) { throw new RuntimeException("Spurious defaultCharset: this is a caveat");
+            }
+        } else { return "";
+        }
+        // throw new RuntimeException("Java's cool n'a pas été démarré depuis un Jar");
+    }
+    private static String javascoolJar = null, javascoolJarEnc = null;
 
     /* ================================================================================================================
     *  ================================================================================================================
@@ -308,6 +323,12 @@ public class Gateway extends Applet {
         if (!getCodeBase().getProtocol().equals("file")) {
             appletLocked = true;
         }
+        systemOutputController.startListening(this);
+    }
+
+    @Override
+    public void stop(){
+        systemOutputController.stopListening();
     }
 
     /**
@@ -336,5 +357,6 @@ public class Gateway extends Applet {
         } else {
         }
     }
+
 
 }

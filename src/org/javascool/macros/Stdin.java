@@ -58,8 +58,12 @@ public class Stdin {
         }
         inputQuestion = question;
         inputSeparator = separator;
-        inputString = null;
-        inputDialog = new Dialog();
+        inputString = (String)JOptionPane.showInputDialog(
+                null,
+                question,
+                "Java's Cool read",
+                JOptionPane.PLAIN_MESSAGE);
+        /*inputDialog = new Dialog();
         inputDialog.setTitle("Java's Cool read");
         inputDialog.add(new JPanel() {
             {
@@ -93,7 +97,7 @@ public class Stdin {
             }
         }
         );
-        inputDialog.open(true);
+        inputDialog.open(true);*/
         return inputString == null ? "" : inputString;
     }
 
@@ -258,7 +262,19 @@ public class Stdin {
         }
         inputQuestion = question;
         inputString = null;
-        inputDialog = new Dialog();
+        int in=JOptionPane.showConfirmDialog(
+                null,
+                question,
+                "Java's Cool read",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+        switch (in){
+            case JOptionPane.YES_OPTION:
+                return true;
+            default:
+                return false;
+        }
+        /*inputDialog = new Dialog();
         inputDialog.setTitle("Java's Cool read");
         inputDialog.add(new JPanel() {
             {
@@ -293,7 +309,7 @@ public class Stdin {
         }
         );
         inputDialog.open(true);
-        return "OUI".equals(inputString);
+        return "OUI".equals(inputString);*/
     }
 
     /**

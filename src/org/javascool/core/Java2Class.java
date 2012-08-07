@@ -54,17 +54,31 @@ public class Java2Class {
     /**
      * @see #compile(String, boolean)
      */
-    public static boolean compile(String javaFiles[], boolean allErrors) {
+    public static boolean compile(String javaFiles[], boolean allErrors){
+        return compile(javaFiles,allErrors, null);
+    }
+
+    public static boolean compile(String javaFiles[], boolean allErrors, String[] path) {
         if (javaFiles.length == 0) {
             return false;
         }
-
+        if(path==null){
+            path=new String[0];
+        }
         // Appel du compilateur SUN par sa méthode main
-        int options = 2;
+        int options = path.length==0?2:4;
         String args[] = new String[options + javaFiles.length];
         args[0] = "-g";
         args[1] = "-nowarn";
         System.arraycopy(javaFiles, 0, args, options, javaFiles.length);
+        if(path!=null){
+            args[2]="-cp";
+            StringBuilder fpath=new StringBuilder();
+            fpath.append(path[0]);
+            for (int x=1;x<path.length;++x)
+                fpath.append(File.pathSeparator).append(path[x]);
+            args[3]= fpath.toString();
+        }
         StringWriter out = new StringWriter();
         Method javac;
         try {
@@ -125,6 +139,8 @@ public class Java2Class {
         }
     }
 
+
+
     /**
      * Charge dynamiquement une classe Java qui implémente un Runnable, pour son e×écution au cours d'une session.
      *
@@ -152,7 +168,7 @@ public class Java2Class {
         private Hashtable classes = new Hashtable();
 
         public JVSClassLoader(String location) {
-            super(ClassLoader.getSystemClassLoader()); //calls the parent class loader's constructor
+            super(JVSClassLoader.class.getClassLoader()); //calls the parent class loader's constructor
             this.location = location;
         }
 
@@ -173,6 +189,10 @@ public class Java2Class {
                 return findSystemClass(className);
             } catch (Exception e) {
             }
+
+            try{
+                return JVSClassLoader.class.getClassLoader().loadClass(className);
+            } catch(Exception e){}
 
             try {
                 FileInputStream in = new FileInputStream(location + File.separator + className + ".class");
